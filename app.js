@@ -1,3 +1,7 @@
+//inicijalizacija storidza
+const storage=new Storage();
+const weatherLocation=storage.getLocationData();
+
 //inicijalizacija objekta vreme iz klase vreme
 const weather=new Weather('Kragujevac', 'RS');
 //inicijalizacija ui objekta iz klase UI
@@ -8,8 +12,8 @@ document.addEventListener('DOMContentLoaded', getWeather);
 document.getElementById('w-change-btn').addEventListener('click', (e)=>{
     const city=document.getElementById('city').value;
     const state=document.getElementById('state').value;
-    weather.changeLocation('Kragujevac', 'RS');
-
+    weather.changeLocation(city, state);
+storage.setLocationData(city, state);
     //uzmi i prikazi vreme
     getWeather();
 
